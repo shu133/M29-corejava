@@ -1,52 +1,47 @@
 package org.tnsif.memoriseme;
-//import java.util.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-//import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class MemariseMe {
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		//String name = br.readLine();
-		//System.out.println("Hi,"+ name+ ".");
-		//Scanner s = new Scanner(System.in);
-		//String name1 = s.nextLine();
-		//System.out.println("Hi,"+ name1+ ".");
-		String noEle= br.readLine();
-		int n= Integer.parseInt(noEle);
-		int i=0;
-		String[] numberArray = br.readLine().split("");
-		String noQue= br.readLine();
-		int q= Integer.parseInt(noQue);
-		String[] queries =new String[q];
-		for(i=0;i<q;i++) {
-			String query = br.readLine();
-			String queryNumber = query.trim();
-			queries[i]=queryNumber;
-			
+		Scanner scanner = new Scanner(System.in);
+
+		// Input the number of elements in the array
+		System.out.println("Enter the number of elements in the array:");
+		int n = scanner.nextInt();
+
+		// Input the elements of the array
+		int[] numbers = new int[n];
+		System.out.println("Enter the elements of the array:");
+		for (int i = 0; i < n; i++) {
+			numbers[i] = scanner.nextInt();
 		}
-		for(i=0;i<queries.length;i++) {
-			int count=0;
-			for(int j=0; j<n;j++) {
-				if(queries[i].equals(numberArray[j])) {
+
+		// Input the number of queries
+		System.out.println("Enter the number of queries:");
+		int q = scanner.nextInt();
+
+		// Input the queries and count occurrences
+		System.out.println("Enter the queries:");
+		Map<Integer, Integer> freqMap = new HashMap<>();
+		for (int i = 0; i < q; i++) {
+			int query = scanner.nextInt();
+			int count = 0;
+			for (int number : numbers) {
+				if (number == query) {
 					count++;
 				}
 			}
-			if (count==0) {
-				System.out.println("Not present");
-				
-			}
-			else {
-				System.out.println(count);
-				
+			if (count > 0) {
+				System.out.println("Total occurrences of " + query + ": " + count);
+			} else {
+				System.out.println("This query is NOT PRESENT");
 			}
 		}
-		
-		
 
+		scanner.close();
 	}
 
 }
