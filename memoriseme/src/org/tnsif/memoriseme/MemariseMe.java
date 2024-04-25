@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class MemariseMe {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)  {
 		Scanner scanner = new Scanner(System.in);
 
 		// Input the number of elements in the array
